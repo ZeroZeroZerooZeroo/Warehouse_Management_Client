@@ -50,7 +50,7 @@ Page {
             }
         }
 
- 
+
         Rectangle {
             id: headermini
             Layout.fillWidth: true
@@ -75,7 +75,7 @@ Page {
             }
         }
 
-      
+
         Rectangle {
             Layout.fillWidth: true
             height: 60
@@ -116,7 +116,7 @@ Page {
             }
         }
 
-  
+
         ScrollView {
             Layout.fillWidth: true
             Layout.fillHeight: true
@@ -188,14 +188,14 @@ Page {
         }
     }
 
- 
+
     Timer {
         id: filterDocumentsTimer
         interval: 300
         onTriggered: filterDocuments()
     }
 
-   
+
     ListModel {
         id: filteredDocumentModel
     }
@@ -235,7 +235,7 @@ Page {
             var match = searchText.length === 0
 
             if (!match) {
-               
+
                 var props = ["number", "date", "type", "counterparty", "amount", "status"]
                 for (var j = 0; j < props.length; j++) {
                     var prop = props[j]
@@ -248,7 +248,7 @@ Page {
             }
 
             if (match) {
-                
+
                 filteredDocumentModel.append({
                     selected: item.selected,
                     number: item.number,

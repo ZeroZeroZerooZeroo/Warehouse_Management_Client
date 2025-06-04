@@ -3,7 +3,7 @@ import QtQuick.Controls 2.15
 
 Image {
     id: logo
-    source: "qrc:/images/logo.png" // Исправлено: источник установлен напрямую
+    source: "qrc:/images/logo.png"
     width: 200
     height: 200
     fillMode: Image.PreserveAspectFit

@@ -1,7 +1,7 @@
 #include <QQmlApplicationEngine>
 #include <QApplication>
 #include <QtCharts>
-#include <QUrl> // Добавляем для работы с QUrl
+#include <QUrl>
 #include "client/OAIUsersApi.h"
 #include <QQmlContext>
 #include "client/OAIUser.h"
@@ -11,13 +11,12 @@ int main(int argc, char *argv[]) {
      qRegisterMetaType<OpenAPI::OAIUser>("OAIUser");
     QQmlApplicationEngine engine;
 
-    // Создаем API
+
     OpenAPI::OAIUsersApi *usersApi = new OpenAPI::OAIUsersApi();
     usersApi->setNewServerForAllOperations(QUrl("http://localhost:3000"),
                                            "Development server",
                                            QMap<QString, OpenAPI::OAIServerVariable>());
 
-    // Регистрируем API как глобальный объект
     engine.rootContext()->setContextProperty("usersApi", usersApi);
 
     engine.loadFromModule("Warehouse_Management_Client", "Main");

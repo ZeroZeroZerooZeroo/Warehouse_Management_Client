@@ -29,7 +29,6 @@ Page {
                 root.isLoginSuccess = true;
                 root.errorMessage = "";
 
-                // Передаем объект с данными пользователя
                 loginSuccess({
                     user_id: userMap.user_id,
 
@@ -71,7 +70,6 @@ Page {
             Layout.alignment: Qt.AlignHCenter
         }
 
-        // Отображение ошибки
         Label {
             visible: errorMessage !== ""
             text: errorMessage
@@ -108,17 +106,14 @@ Page {
             text: "Войти"
             Layout.fillWidth: true
             onClicked: {
-                // Проверка на пустые поля
                 if (loginField.text === "" || passwordField.text === "") {
                     errorMessage = "Логин и пароль не могут быть пустыми";
                     return;
                 }
 
-                // Сброс предыдущих состояний
                 errorMessage = "";
                 isLoginSuccess = false;
 
-                // Вызов API
                 usersApi.qmlUsersLoginPOST(loginField.text, passwordField.text);
             }
 

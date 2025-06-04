@@ -10,7 +10,7 @@ ApplicationWindow {
     title: "Динамическое управление складом"
 
     property string currentPage: "login"
-    property var currentUser: null // Храним текущего пользователя
+    property var currentUser: null
     StackView {
         id: stackView
         anchors.fill: parent
@@ -21,27 +21,27 @@ ApplicationWindow {
         id: loginPage
         LoginPage {
             onLoginSuccess: function(userMap) {
-                        //console.log("Успешный вход! ID пользователя:", userMap.user_id);
-                        root.currentUser = userMap; // Сохраняем данные пользователя
+
+                        root.currentUser = userMap;
                         stackView.push(mainPage);
                     }
-            onGoToRegistration: stackView.push(registrationPage) // Переход на регистрацию
-            onGoToForgotPassword: stackView.push(forgotPasswordPage) // Переход на восстановление
+            onGoToRegistration: stackView.push(registrationPage)
+            onGoToForgotPassword: stackView.push(forgotPasswordPage)
         }
     }
 
     Component {
         id: registrationPage
         RegistrationPage {
-            onBackToLogin: stackView.pop() // Возврат на страницу входа
-            onRegistrationSuccess: stackView.pop() // Возврат после успешной регистрации
+            onBackToLogin: stackView.pop()
+            onRegistrationSuccess: stackView.pop()
         }
     }
 
     Component {
         id: forgotPasswordPage
         ForgotPasswordPage {
-            onBackToLogin: stackView.pop() // Возврат на страницу входа
+            onBackToLogin: stackView.pop()
         }
     }
 
@@ -49,7 +49,7 @@ ApplicationWindow {
         id: mainPage
         MainPage {
             property var pageUser: root.currentUser
-            onLogout: stackView.pop() // Возврат на страницу входа
+            onLogout: stackView.pop()
             onGoToMain: stackView.push(mainPage)
             onGoToIndicators: stackView.push(indicatorsPage)
             onGoToPurchases:stackView.push(purchasesPage)
@@ -68,7 +68,7 @@ ApplicationWindow {
     Component {
         id: indicatorsPage
         IndicatorsPage {
-            onLogout: stackView.pop() // Возврат на страницу входа
+            onLogout: stackView.pop()
             onGoToMain: stackView.push(mainPage)
             onGoToIndicators: stackView.push(indicatorsPage)
             onGoToPurchases:stackView.push(purchasesPage)
@@ -88,7 +88,7 @@ ApplicationWindow {
     Component {
         id: purchasesPage
         PurchasesPage {
-            onLogout: stackView.pop() // Возврат на страницу входа
+            onLogout: stackView.pop()
             onGoToMain: stackView.push(mainPage)
             onGoToIndicators: stackView.push(indicatorsPage)
             onGoToPurchases:stackView.push(purchasesPage)
@@ -107,7 +107,7 @@ ApplicationWindow {
     Component {
         id: salesPage
         SalesPage {
-            onLogout: stackView.pop() // Возврат на страницу входа
+            onLogout: stackView.pop()
             onGoToMain: stackView.push(mainPage)
             onGoToIndicators: stackView.push(indicatorsPage)
             onGoToPurchases:stackView.push(purchasesPage)
@@ -126,7 +126,7 @@ ApplicationWindow {
     Component {
         id: warehousesPage
         WarehousesPage {
-            onLogout: stackView.pop() // Возврат на страницу входа
+            onLogout: stackView.pop()
             onGoToMain: stackView.push(mainPage)
             onGoToIndicators: stackView.push(indicatorsPage)
             onGoToPurchases:stackView.push(purchasesPage)
@@ -144,7 +144,7 @@ ApplicationWindow {
     Component {
         id: productsPage
         ProductsPage {
-            onLogout: stackView.pop() // Возврат на страницу входа
+            onLogout: stackView.pop()
             onGoToMain: stackView.push(mainPage)
             onGoToIndicators: stackView.push(indicatorsPage)
             onGoToPurchases:stackView.push(purchasesPage)
@@ -163,7 +163,7 @@ ApplicationWindow {
     Component {
         id: counterpartiesPage
         CounterpartiesPage {
-            onLogout: stackView.pop() // Возврат на страницу входа
+            onLogout: stackView.pop()
             onGoToMain: stackView.push(mainPage)
             onGoToIndicators: stackView.push(indicatorsPage)
             onGoToPurchases:stackView.push(purchasesPage)
@@ -182,7 +182,7 @@ ApplicationWindow {
     Component {
         id: moneysPage
         MoneyPage {
-            onLogout: stackView.pop() // Возврат на страницу входа
+            onLogout: stackView.pop()
             onGoToMain: stackView.push(mainPage)
             onGoToIndicators: stackView.push(indicatorsPage)
             onGoToPurchases:stackView.push(purchasesPage)
@@ -201,7 +201,7 @@ ApplicationWindow {
     Component {
         id: forecastingPage
         ForecastingPage {
-            onLogout: stackView.pop() // Возврат на страницу входа
+            onLogout: stackView.pop()
             onGoToMain: stackView.push(mainPage)
             onGoToIndicators: stackView.push(indicatorsPage)
             onGoToPurchases:stackView.push(purchasesPage)
@@ -220,7 +220,7 @@ ApplicationWindow {
     Component {
         id: notificationsPage
         NotificationsPage {
-            onLogout: stackView.pop() // Возврат на страницу входа
+            onLogout: stackView.pop()
             onGoToMain: stackView.push(mainPage)
             onGoToIndicators: stackView.push(indicatorsPage)
             onGoToPurchases:stackView.push(purchasesPage)
@@ -239,7 +239,7 @@ ApplicationWindow {
     Component {
         id: helpPage
         HelpPage {
-            onLogout: stackView.pop() // Возврат на страницу входа
+            onLogout: stackView.pop()
             onGoToMain: stackView.push(mainPage)
             onGoToIndicators: stackView.push(indicatorsPage)
             onGoToPurchases:stackView.push(purchasesPage)
@@ -258,7 +258,7 @@ ApplicationWindow {
     Component {
         id: profilePage
         ProfilePage {
-            onLogout: stackView.pop() // Возврат на страницу входа
+            onLogout: stackView.pop()
             onGoToMain: stackView.push(mainPage)
             onGoToIndicators: stackView.push(indicatorsPage)
             onGoToPurchases:stackView.push(purchasesPage)
@@ -276,7 +276,7 @@ ApplicationWindow {
     Component {
         id: documentsPage
         DocumentsPage {
-            onLogout: stackView.pop() // Возврат на страницу входа
+            onLogout: stackView.pop()
             onGoToMain: stackView.push(mainPage)
             onGoToIndicators: stackView.push(indicatorsPage)
             onGoToPurchases:stackView.push(purchasesPage)
