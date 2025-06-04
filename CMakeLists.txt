@@ -38,6 +38,7 @@ RESOURCES images/forecast.png images/help.png images/home.png images/logo.png im
 QML_FILES components/Header.qml components/HeaderButton.qml components/Logo.qml pages/CounterpartiesPage.qml pages/DocumentsPage.qml pages/ForecastingPage.qml pages/ForgotPasswordPage.qml pages/IndicatorsPage.qml pages/LoginPage.qml pages/MainPage.qml pages/MoneyPage.qml pages/ProductsPage.qml pages/ProfilePage.qml pages/PurchasesPage.qml pages/RegistrationPage.qml pages/SalesPage.qml pages/WarehousesPage.qml
 QML_FILES components/HelpPopup.qml components/NotificationPopup.qml
 QML_FILES pages/DocumentTypesPage.qml
+QML_FILES pages/WarehouseDetailsPage.qml
 
 
 

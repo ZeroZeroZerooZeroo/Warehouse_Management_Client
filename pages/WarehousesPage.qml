@@ -19,7 +19,7 @@ Page {
     signal goToProfile()
     signal goToMain()
     signal goToDocuments()
-    signal openWarehouse(int warehouseId)
+    signal warehouseSelected(int warehouseId)
 
     property int currentWarehouse: -1
     property string searchText: ""
@@ -415,7 +415,7 @@ Page {
                     onClicked: {
                         for (var i = 0; i < filteredWarehousesModel.count; i++) {
                             if (filteredWarehousesModel.get(i).selected) {
-                                root.openWarehouse(filteredWarehousesModel.get(i).warehouse_id)
+                                root.warehouseSelected(filteredWarehousesModel.get(i).warehouse_id)
                                 break;
                             }
                         }

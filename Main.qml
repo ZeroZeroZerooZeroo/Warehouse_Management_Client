@@ -130,6 +130,11 @@ ApplicationWindow {
             onGoToMoney:stackView.push(moneysPage)
             onGoToForecasting:stackView.push(forecastingPage)
             onGoToProfile:stackView.push(profilePage)
+            onWarehouseSelected: function(warehouseId) {
+                        stackView.push(warehouseDetailsPage, {
+                            warehouseId: warehouseId
+                        });
+                    }
         }
     }
     Component {
@@ -251,4 +256,26 @@ ApplicationWindow {
             onGoToProfile:stackView.push(profilePage)
         }
     }
+
+    Component {
+        id: warehouseDetailsPage
+        WarehouseDetailsPage {
+            property int warehouseId: -1
+
+            onBackToWarehouses: stackView.pop()
+
+            onLogout: stackView.pop()
+            onGoToMain: stackView.push(mainPage)
+            onGoToIndicators: stackView.push(indicatorsPage)
+            onGoToPurchases:stackView.push(purchasesPage)
+            onGoToSales:stackView.push(salesPage)
+            onGoToWarehouses:stackView.push(warehousesPage)
+            onGoToProducts:stackView.push(productsPage)
+            onGoToCounterparties:stackView.push(counterpartiesPage)
+            onGoToMoney:stackView.push(moneysPage)
+            onGoToForecasting:stackView.push(forecastingPage)
+            onGoToProfile:stackView.push(profilePage)
+        }
+    }
+
 }
