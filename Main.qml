@@ -2,6 +2,7 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
 import "./pages"
+import "./components"
 ApplicationWindow {
     id: root
     width: 1920
@@ -59,8 +60,6 @@ ApplicationWindow {
             onGoToCounterparties:stackView.push(counterpartiesPage)
             onGoToMoney:stackView.push(moneysPage)
             onGoToForecasting:stackView.push(forecastingPage)
-            onGoToNotifications:stackView.push(notificationsPage)
-            onGoToHelp:stackView.push(helpPage)
             onGoToProfile:stackView.push(profilePage)
         }
     }
@@ -78,8 +77,6 @@ ApplicationWindow {
             onGoToCounterparties:stackView.push(counterpartiesPage)
             onGoToMoney:stackView.push(moneysPage)
             onGoToForecasting:stackView.push(forecastingPage)
-            //onGoToNotifications:stackView.push(notificationsPage)
-            onGoToHelp:stackView.push(helpPage)
             onGoToProfile:stackView.push(profilePage)
             onGoToDocuments:stackView.push(documentsPage)
         }
@@ -98,8 +95,6 @@ ApplicationWindow {
             onGoToCounterparties:stackView.push(counterpartiesPage)
             onGoToMoney:stackView.push(moneysPage)
             onGoToForecasting:stackView.push(forecastingPage)
-            onGoToNotifications:stackView.push(notificationsPage)
-            onGoToHelp:stackView.push(helpPage)
             onGoToProfile:stackView.push(profilePage)
         }
     }
@@ -117,8 +112,6 @@ ApplicationWindow {
             onGoToCounterparties:stackView.push(counterpartiesPage)
             onGoToMoney:stackView.push(moneysPage)
             onGoToForecasting:stackView.push(forecastingPage)
-            onGoToNotifications:stackView.push(notificationsPage)
-            onGoToHelp:stackView.push(helpPage)
             onGoToProfile:stackView.push(profilePage)
         }
     }
@@ -136,8 +129,6 @@ ApplicationWindow {
             onGoToCounterparties:stackView.push(counterpartiesPage)
             onGoToMoney:stackView.push(moneysPage)
             onGoToForecasting:stackView.push(forecastingPage)
-            onGoToNotifications:stackView.push(notificationsPage)
-            onGoToHelp:stackView.push(helpPage)
             onGoToProfile:stackView.push(profilePage)
         }
     }
@@ -154,8 +145,6 @@ ApplicationWindow {
             onGoToCounterparties:stackView.push(counterpartiesPage)
             onGoToMoney:stackView.push(moneysPage)
             onGoToForecasting:stackView.push(forecastingPage)
-            onGoToNotifications:stackView.push(notificationsPage)
-            onGoToHelp:stackView.push(helpPage)
             onGoToProfile:stackView.push(profilePage)
         }
     }
@@ -173,8 +162,6 @@ ApplicationWindow {
             onGoToCounterparties:stackView.push(counterpartiesPage)
             onGoToMoney:stackView.push(moneysPage)
             onGoToForecasting:stackView.push(forecastingPage)
-            onGoToNotifications:stackView.push(notificationsPage)
-            onGoToHelp:stackView.push(helpPage)
             onGoToProfile:stackView.push(profilePage)
         }
     }
@@ -192,8 +179,6 @@ ApplicationWindow {
             onGoToCounterparties:stackView.push(counterpartiesPage)
             onGoToMoney:stackView.push(moneysPage)
             onGoToForecasting:stackView.push(forecastingPage)
-            onGoToNotifications:stackView.push(notificationsPage)
-            onGoToHelp:stackView.push(helpPage)
             onGoToProfile:stackView.push(profilePage)
         }
     }
@@ -211,49 +196,10 @@ ApplicationWindow {
             onGoToCounterparties:stackView.push(counterpartiesPage)
             onGoToMoney:stackView.push(moneysPage)
             onGoToForecasting:stackView.push(forecastingPage)
-            onGoToNotifications:stackView.push(notificationsPage)
-            onGoToHelp:stackView.push(helpPage)
             onGoToProfile:stackView.push(profilePage)
         }
     }
 
-    Component {
-        id: notificationsPage
-        NotificationsPage {
-            onLogout: stackView.pop()
-            onGoToMain: stackView.push(mainPage)
-            onGoToIndicators: stackView.push(indicatorsPage)
-            onGoToPurchases:stackView.push(purchasesPage)
-            onGoToSales:stackView.push(salesPage)
-            onGoToWarehouses:stackView.push(warehousesPage)
-            onGoToProducts:stackView.push(productsPage)
-            onGoToCounterparties:stackView.push(counterpartiesPage)
-            onGoToMoney:stackView.push(moneysPage)
-            onGoToForecasting:stackView.push(forecastingPage)
-            onGoToNotifications:stackView.push(notificationsPage)
-            onGoToHelp:stackView.push(helpPage)
-            onGoToProfile:stackView.push(profilePage)
-        }
-    }
-
-    Component {
-        id: helpPage
-        HelpPage {
-            onLogout: stackView.pop()
-            onGoToMain: stackView.push(mainPage)
-            onGoToIndicators: stackView.push(indicatorsPage)
-            onGoToPurchases:stackView.push(purchasesPage)
-            onGoToSales:stackView.push(salesPage)
-            onGoToWarehouses:stackView.push(warehousesPage)
-            onGoToProducts:stackView.push(productsPage)
-            onGoToCounterparties:stackView.push(counterpartiesPage)
-            onGoToMoney:stackView.push(moneysPage)
-            onGoToForecasting:stackView.push(forecastingPage)
-            onGoToNotifications:stackView.push(notificationsPage)
-            onGoToHelp:stackView.push(helpPage)
-            onGoToProfile:stackView.push(profilePage)
-        }
-    }
 
     Component {
         id: profilePage
@@ -267,8 +213,6 @@ ApplicationWindow {
             onGoToProducts:stackView.push(productsPage)
             onGoToCounterparties:stackView.push(counterpartiesPage)
             onGoToMoney:stackView.push(moneysPage)
-            onGoToForecasting:stackView.push(forecastingPage)
-            onGoToNotifications:stackView.push(notificationsPage)
             onGoToHelp:stackView.push(helpPage)
         }
     }
@@ -286,8 +230,6 @@ ApplicationWindow {
             onGoToCounterparties:stackView.push(counterpartiesPage)
             onGoToMoney:stackView.push(moneysPage)
             onGoToForecasting:stackView.push(forecastingPage)
-            onGoToNotifications:stackView.push(notificationsPage)
-            onGoToHelp:stackView.push(helpPage)
             onGoToProfile:stackView.push(profilePage)
         }
     }

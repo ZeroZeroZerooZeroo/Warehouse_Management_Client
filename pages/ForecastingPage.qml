@@ -19,6 +19,19 @@ Page {
     signal goToMain()
 
 
+
+    onGoToNotifications: notificationPopup.open()
+    onGoToHelp: helpPopup.open()
+
+
+    NotificationPopup {
+      id: notificationPopup
+    }
+
+    HelpPopup {
+      id: helpPopup
+    }
+
     background: Rectangle {
         color: "#ECF0F1"
     }

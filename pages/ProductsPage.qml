@@ -19,14 +19,25 @@ Page {
     signal goToProfile()
     signal goToMain()
 
-    property bool showInactive: false // Флаг показа неактивных товаров
-    property int currentCategory: -1 // ID текущей категории
+    property bool showInactive: false
+    property int currentCategory: -1
 
     background: Rectangle {
         color: "#ECF0F1"
     }
 
-    // Модель категорий
+    onGoToNotifications: notificationPopup.open()
+    onGoToHelp: helpPopup.open()
+
+
+    NotificationPopup {
+      id: notificationPopup
+    }
+
+    HelpPopup {
+      id: helpPopup
+    }
+
     ListModel {
         id: categoriesModel
         Component.onCompleted: loadSampleData()
@@ -39,7 +50,7 @@ Page {
         }
     }
 
-    // Модель товаров
+
     ListModel {
         id: productsModel
         Component.onCompleted: loadSampleData()
@@ -74,12 +85,11 @@ Page {
         }
     }
 
-    // Фильтрованная модель
+
     ListModel {
         id: filteredProducts
     }
 
-    // Диалог редактирования товара
     Component {
         id: productDialog
         Dialog {
@@ -93,7 +103,7 @@ Page {
             title: isNew ? "Добавить товар" : "Редактировать товар"
             standardButtons: Dialog.Ok | Dialog.Cancel
 
-            // Заголовок диалога
+
             header: Rectangle {
                 color: "#3498db"
                 height: 40
@@ -120,7 +130,7 @@ Page {
                     columnSpacing: 10
                     rowSpacing: 10
 
-                    // Основная информация
+
                     Label {
                         text: "Основная информация"
                         font.bold: true
@@ -172,7 +182,7 @@ Page {
                         }
                     }
 
-                    // Единицы измерения и штрих-код
+
                     Label { text: "Единица измерения:"; Layout.alignment: Qt.AlignRight }
                     ComboBox {
                         id: unitField
@@ -189,7 +199,6 @@ Page {
                         placeholderText: "Штрих-код"
                     }
 
-                    // Уровни запасов
                     Label {
                         text: "Управление запасами"
                         font.bold: true
@@ -224,7 +233,7 @@ Page {
                         placeholderText: "Срок поставки в днях"
                     }
 
-                    // Цены
+
                     Label {
                         text: "Цены"
                         font.bold: true
@@ -250,7 +259,7 @@ Page {
                         placeholderText: "Цена продажи"
                     }
 
-                    // Статус
+
                     Label {
                         text: "Статус"
                         font.bold: true
@@ -265,7 +274,7 @@ Page {
                         checked: currentItem ? currentItem.is_active : true
                     }
 
-                    // Даты создания/обновления
+
                     Label {
                         text: "Системная информация"
                         font.bold: true
@@ -301,7 +310,7 @@ Page {
                 if (validateForm()) {
                     saveChanges()
                 } else {
-                    open() // Оставить диалог открытым при ошибке
+                    open()
                 }
             }
 
@@ -347,7 +356,7 @@ Page {
                 var currentDate = new Date().toISOString()
 
                 if(isNew) {
-                    // Генерация нового ID
+
                     var newId = 1;
                     for (var i = 0; i < productsModel.count; i++) {
                         if (productsModel.get(i).product_id >= newId) {
@@ -395,7 +404,7 @@ Page {
         }
     }
 
-    // Компонент для отображения ошибок валидации
+
     Component {
         id: validationErrorDialog
         Dialog {
@@ -429,7 +438,7 @@ Page {
         anchors.fill: parent
         spacing: 0
 
-        // Основной заголовок
+
         Header {
             id: header
             Layout.fillWidth: true
@@ -452,7 +461,7 @@ Page {
             }
         }
 
-        // Подзаголовок для раздела товаров
+
         Rectangle {
             id: headermini
             Layout.fillWidth: true
@@ -475,13 +484,13 @@ Page {
                     text: "Категории"
                     iconSource: "qrc:/images/categories.png"
                     onClicked: {
-                        // Реализация перехода к категориям товаров
+
                         console.log("Переход к категориям товаров")
                     }
                     pageName: "Категории"
                 }
 
-                // Фильтр по категории
+
                 Label {
                     text: "Категория:"
                     color: "white"
@@ -504,14 +513,14 @@ Page {
                         filterProducts()
                     }
 
-                    // Опция "Все категории"
+
                     Component.onCompleted: {
                         categoryFilter.model.insert(0, {category_id: -1, name: "Все категории"})
                         currentIndex = 0
                     }
                 }
 
-                // Фильтр по статусу
+
                 Label {
                     text: "Статус:"
                     color: "white"
@@ -534,7 +543,7 @@ Page {
             }
         }
 
-        // Панель инструментов
+
         Rectangle {
             Layout.fillWidth: true
             height: 60
@@ -546,7 +555,7 @@ Page {
                 anchors.rightMargin: 10
                 spacing: 10
 
-                // Чекбокс "Выбрать все"
+
                 CheckBox {
                     id: selectAllCheckBox
                     text: "Все"
@@ -559,7 +568,7 @@ Page {
                     }
                 }
 
-                // Кнопки действий
+
                 Button {
                     text: "Добавить"
                     icon.source: "qrc:/images/add.png"
@@ -630,7 +639,7 @@ Page {
                     onClicked: activateSelected(false)
                 }
 
-                // Поиск
+
                 TextField {
                     id: searchField
                     Layout.fillWidth: true
@@ -661,7 +670,7 @@ Page {
             }
         }
 
-        // Таблица товаров с горизонтальной прокруткой
+
         ScrollView {
             Layout.fillWidth: true
             Layout.fillHeight: true
@@ -669,14 +678,14 @@ Page {
             ScrollBar.vertical.policy: ScrollBar.AsNeeded
             clip: true
 
-            // Заголовки таблицы
+
             ListView {
                 id: productsListView
                 anchors.fill: parent
                 model: filteredProducts
                 clip: true
 
-                // Рассчитываем общую ширину таблицы
+
                 property real totalWidth: 50 + 120 + 250 + 100 + 150 + 100 + 100 + 120 + 120 + 150 + 120 + 120
                 width: Math.max(parent.width, totalWidth)
 
@@ -723,7 +732,7 @@ Page {
                         anchors.fill: parent
                         spacing: 1
 
-                        // Чекбокс выбора
+
                         Rectangle {
                             width: 50
                             height: parent.height
@@ -739,7 +748,7 @@ Page {
                             }
                         }
 
-                        // Поля товара
+
                         TextCell {
                             width: 120;
                             text: model.sku
@@ -811,7 +820,7 @@ Page {
             }
         }
 
-        // Статус бар
+
         Rectangle {
             Layout.fillWidth: true
             height: 30
@@ -842,17 +851,17 @@ Page {
         for (var i = 0; i < productsModel.count; i++) {
             var item = productsModel.get(i)
 
-            // Фильтрация по статусу
+
             if (!root.showInactive && !item.is_active) continue
             if (statusFilter.currentIndex === 2 && item.is_active) continue
 
-            // Фильтрация по категории
+
             if (root.currentCategory !== -1 && item.category_id !== root.currentCategory) continue
 
             var match = searchText.length === 0
 
             if (!match) {
-                // Поиск по всем текстовым полям
+
                 var props = ["sku", "name", "description", "unit", "barcode"]
                 for (var j = 0; j < props.length; j++) {
                     var prop = props[j]
@@ -863,7 +872,7 @@ Page {
                     }
                 }
 
-                // Поиск по числовым полям
+
                 if (!match) {
                     var numProps = ["purchase_price", "selling_price", "min_stock", "max_stock"]
                     for (var k = 0; k < numProps.length; k++) {
@@ -876,7 +885,7 @@ Page {
                     }
                 }
 
-                // Поиск по категории
+
                 if (!match) {
                     for (var c = 0; c < categoriesModel.count; c++) {
                         if (categoriesModel.get(c).category_id === item.category_id) {
@@ -912,7 +921,7 @@ Page {
             }
         }
 
-        // Сбросить выбор "Все", если не все элементы выбраны
+
         var allSelected = true;
         for (var idx = 0; idx < filteredProducts.count; idx++) {
             if (!filteredProducts.get(idx).selected) {
@@ -964,7 +973,7 @@ Page {
             if (filteredProducts.get(i).selected) {
                 var id = filteredProducts.get(i).product_id
 
-                // Обновляем в основной модели
+
                 for (var j = 0; j < productsModel.count; j++) {
                     if (productsModel.get(j).product_id === id) {
                         productsModel.set(j, {
@@ -985,7 +994,7 @@ Page {
                 var id = filteredProducts.get(i).product_id
                 filteredProducts.remove(i)
 
-                // Удалить из основной модели
+
                 for (var j = 0; j < productsModel.count; j++) {
                     if (productsModel.get(j).product_id === id) {
                         productsModel.remove(j)
@@ -997,7 +1006,7 @@ Page {
         filterProducts()
     }
 
-    // Компонент для ячейки текста
+
     component TextCell: Label {
         property color cellColor: "black"
         width: parent.width
@@ -1008,7 +1017,7 @@ Page {
         elide: Text.ElideRight
     }
 
-    // Компонент для заголовка
+
     component HeaderCell: Rectangle {
         property alias text: label.text
         width: parent.width

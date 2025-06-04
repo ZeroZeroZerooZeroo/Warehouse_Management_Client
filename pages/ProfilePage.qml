@@ -20,6 +20,19 @@ Page {
     signal goToMain()
     signal goToDocuments()
 
+    onGoToNotifications: notificationPopup.open()
+    onGoToHelp: helpPopup.open()
+
+
+    NotificationPopup {
+      id: notificationPopup
+    }
+
+    HelpPopup {
+      id: helpPopup
+    }
+
+
     property var userData: {
         "user_id": 1,
         "username": "ivanov",
