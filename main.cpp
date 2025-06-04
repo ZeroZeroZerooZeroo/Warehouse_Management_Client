@@ -4,9 +4,11 @@
 #include <QUrl> // Добавляем для работы с QUrl
 #include "client/OAIUsersApi.h"
 #include <QQmlContext>
+#include "client/OAIUser.h"
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
+     qRegisterMetaType<OpenAPI::OAIUser>("OAIUser");
     QQmlApplicationEngine engine;
 
     // Создаем API

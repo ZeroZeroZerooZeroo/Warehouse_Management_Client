@@ -23,7 +23,7 @@ Button {
 
         Text {
             text: root.text
-            color: "#34495E"
+            color: "#cccccc"
             font.pixelSize: 14
             anchors.verticalCenter: parent.verticalCenter
         }

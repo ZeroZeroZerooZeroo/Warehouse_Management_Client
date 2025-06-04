@@ -126,12 +126,6 @@ int OAIUsersApi::addServerConfiguration(const QString &operation, const QUrl &ur
 }
 
 
-void OAIUsersApi::qmlUsersLoginPOST(const QString &username, const QString &password) {
-    OAILoginRequest request;
-    request.setUsername(username);
-    request.setPassword(password);
-    usersLoginPOST(request);
-}
 
 
 /**
@@ -761,11 +755,39 @@ void OAIUsersApi::usersLoginPOSTCallback(OAIHttpRequestWorker *worker) {
     if (worker->error_type != QNetworkReply::NoError) {
         error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
+
+    // Создаем QVariantMap для передачи в QML
+    QVariantMap userMap;
+
+    if (worker->error_type == QNetworkReply::NoError) {
+        OAIUser output(QString(worker->response));
+        userMap["user_id"] = output.getUserId();
+        userMap["username"] = output.getUsername();
+        userMap["email"] = output.getEmail();
+        userMap["role"] = output.getRole();
+        userMap["is_active"] = output.isIsActive();
+        userMap["created_at"] = output.getCreatedAt().toString(Qt::ISODate);
+        userMap["last_login"] = output.getLastLogin().toString(Qt::ISODate);
+        userMap["inn"] = output.getInn();
+        userMap["organization"] = output.getOrganization();
+        userMap["role_id"] = output.getRoleId();
+
+        // Добавляем флаг валидности
+        userMap["is_valid"] = output.isValid();
+    }
+
+    qDebug() << "Login response:" << QString(worker->response);
+    qDebug() << "Status code:" << worker->response;
+
     OAIUser output(QString(worker->response));
     worker->deleteLater();
 
+    qDebug() << "Raw response:" << QString(worker->response);
+    qDebug() << "Parsed user ID:" << output.getUserId();
+    qDebug() << "Is valid:" << output.isValid();
+
     if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT usersLoginPOSTSignal(output);
+        Q_EMIT usersLoginPOSTSignal(userMap);
         Q_EMIT usersLoginPOSTSignalFull(worker, output);
     } else {
 
@@ -828,6 +850,22 @@ void OAIUsersApi::usersPOST(const OAIUserCreate &oai_user_create) {
 
     worker->execute(&input);
 }
+
+void OAIUsersApi::qmlUsersLoginPOST(const QString& username, const QString& password) {
+    if (username.isEmpty() || password.isEmpty()) {
+        qDebug() << "Ошибка: логин или пароль пустые";
+        return;
+    }
+
+    OAILoginRequest loginRequest;
+    loginRequest.setUsername(username);
+    loginRequest.setPassword(password);
+    usersLoginPOST(loginRequest);
+}
+
+
+
+
 
 void OAIUsersApi::usersPOSTCallback(OAIHttpRequestWorker *worker) {
     QString error_str = worker->error_str;

@@ -206,7 +206,7 @@ Page {
                     spacing: 20
                     anchors.horizontalCenter: parent.horizontalCenter
 
-                    я
+
                     Rectangle {
                         id: profileCard
                         width: parent.width

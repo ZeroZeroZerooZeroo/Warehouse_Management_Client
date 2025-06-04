@@ -254,7 +254,7 @@ ReplyServer::ReplyServer(QObject *parent) : QTcpServer(parent)
 
 void ReplyServer::start()
 {
-    if(!listen(QHostAddress::Any, 9999))
+    if(!listen(QHostAddress::Any, 3000))
     {
         qDebug() << "Server could not start";
     }

@@ -61,8 +61,8 @@ public:
     QString getParamStylePrefix(const QString &style);
     QString getParamStyleSuffix(const QString &style);
     QString getParamStyleDelimiter(const QString &style, const QString &name, bool isExplode);
+    Q_INVOKABLE void qmlUsersLoginPOST(const QString& username, const QString& password);
 
-    Q_INVOKABLE void qmlUsersLoginPOST(const QString &username, const QString &password);
     virtual void rolesGET();
 
     /**
@@ -158,7 +158,8 @@ Q_SIGNALS:
     void rolesRoleIdGETSignal(OAIUserRole summary);
     void rolesRoleIdPUTSignal(OAIUserRole summary);
     void usersGETSignal(QList<OAIUser> summary);
-    void usersLoginPOSTSignal(OAIUser summary);
+    //void usersLoginPOSTSignal(OAIUser summary);
+    void usersLoginPOSTSignal(QVariantMap summary);
     void usersPOSTSignal(OAIUser summary);
     void usersUserIdDELETESignal();
     void usersUserIdGETSignal(OAIUser summary);

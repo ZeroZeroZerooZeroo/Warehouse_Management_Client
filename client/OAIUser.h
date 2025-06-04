@@ -29,8 +29,10 @@
 namespace OpenAPI {
 
 class OAIUser : public OAIObject {
+
 public:
     OAIUser();
+
     OAIUser(QString json);
     ~OAIUser() override;
 
@@ -96,7 +98,8 @@ public:
 
     virtual bool isSet() const override;
     virtual bool isValid() const override;
-
+signals:
+    void idChanged();
 private:
     void initializeModel();
 
@@ -143,6 +146,7 @@ private:
     qint64 m_role_id;
     bool m_role_id_isSet;
     bool m_role_id_isValid;
+    qint32 m_id;
 };
 
 } // namespace OpenAPI

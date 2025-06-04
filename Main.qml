@@ -10,7 +10,7 @@ ApplicationWindow {
     title: "Динамическое управление складом"
 
     property string currentPage: "login"
-
+    property var currentUser: null // Храним текущего пользователя
     StackView {
         id: stackView
         anchors.fill: parent
@@ -20,12 +20,11 @@ ApplicationWindow {
     Component {
         id: loginPage
         LoginPage {
-            onLoginSuccess: {
-                if (isLoginSuccess) {
-                    console.log("Пользователь:", loginResponse.username);
-                    stackView.push(mainPage);
-                }
-            } // Переход на главную страницу
+            onLoginSuccess: function(userMap) {
+                        //console.log("Успешный вход! ID пользователя:", userMap.user_id);
+                        root.currentUser = userMap; // Сохраняем данные пользователя
+                        stackView.push(mainPage);
+                    }
             onGoToRegistration: stackView.push(registrationPage) // Переход на регистрацию
             onGoToForgotPassword: stackView.push(forgotPasswordPage) // Переход на восстановление
         }
@@ -49,6 +48,7 @@ ApplicationWindow {
     Component {
         id: mainPage
         MainPage {
+            property var pageUser: root.currentUser
             onLogout: stackView.pop() // Возврат на страницу входа
             onGoToMain: stackView.push(mainPage)
             onGoToIndicators: stackView.push(indicatorsPage)
