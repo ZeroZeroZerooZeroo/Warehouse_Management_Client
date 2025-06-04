@@ -1,0 +1,37 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>pages/LoginPage.qml</file>
+        <file>pages/RegistrationPage.qml</file>
+        <file>pages/ForgotPasswordPage.qml</file>
+        <file>pages/MainPage.qml</file>
+        <file>pages/IndicatorsPage.qml</file>
+        <file>pages/PurchasesPage.qml</file>
+        <file>pages/SalesPage.qml</file>
+        <file>pages/WarehousesPage.qml</file>
+        <file>pages/ProductsPage.qml</file>
+        <file>pages/CounterpartiesPage.qml</file>
+        <file>pages/MoneyPage.qml</file>
+        <file>pages/ForecastingPage.qml</file>
+        <file>pages/NotificationsPage.qml</file>
+        <file>pages/HelpPage.qml</file>
+        <file>pages/ProfilePage.qml</file>
+        <file>pages/DocumentsPage.qml</file>
+        <file>components/Header.qml</file>
+        <file>components/Logo.qml</file>
+        <file>components/HeaderButton.qml</file>
+        <file>images/logo.png</file>
+        <file>images/home.png</file>
+        <file>images/stats.png</file>
+        <file>images/purchase.png</file>
+        <file>images/sales.png</file>
+        <file>images/warehouse.png</file>
+        <file>images/products.png</file>
+        <file>images/partners.png</file>
+        <file>images/money.png</file>
+        <file>images/forecast.png</file>
+        <file>images/notifications.png</file>
+        <file>images/help.png</file>
+        <file>images/profile.png</file>
+    </qresource>
+</RCC>
