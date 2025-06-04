@@ -19,6 +19,7 @@ Page {
     signal goToProfile()
     signal goToMain()
     signal goToDocuments()
+    signal goToDocumentsTypes()
 
 
 
@@ -469,6 +470,7 @@ Page {
                 HeaderButton {
                     text: "Типы документов"
                     iconSource: "qrc:/images/doctypes.png"
+                    onClicked: root.goToDocumentsTypes()
                 }
 
                 Label { text: "Тип:"; color: "white"; Layout.leftMargin: 20 }

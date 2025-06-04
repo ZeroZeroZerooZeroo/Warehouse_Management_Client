@@ -37,6 +37,7 @@ qt_add_qml_module(appWarehouse_Management_Client
 RESOURCES images/forecast.png images/help.png images/home.png images/logo.png images/money.png images/notifications.png images/partners.png images/products.png images/profile.png images/purchase.png images/sales.png images/stats.png images/warehouse.png
 QML_FILES components/Header.qml components/HeaderButton.qml components/Logo.qml pages/CounterpartiesPage.qml pages/DocumentsPage.qml pages/ForecastingPage.qml pages/ForgotPasswordPage.qml pages/IndicatorsPage.qml pages/LoginPage.qml pages/MainPage.qml pages/MoneyPage.qml pages/ProductsPage.qml pages/ProfilePage.qml pages/PurchasesPage.qml pages/RegistrationPage.qml pages/SalesPage.qml pages/WarehousesPage.qml
 QML_FILES components/HelpPopup.qml components/NotificationPopup.qml
+QML_FILES pages/DocumentTypesPage.qml
 
 
 

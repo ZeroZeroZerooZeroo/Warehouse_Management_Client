@@ -231,6 +231,24 @@ ApplicationWindow {
             onGoToMoney:stackView.push(moneysPage)
             onGoToForecasting:stackView.push(forecastingPage)
             onGoToProfile:stackView.push(profilePage)
+            onGoToDocumentsTypes:stackView.push(documentTypesPage)
+        }
+    }
+
+    Component {
+        id: documentTypesPage
+        DocumentTypesPage {
+            onLogout: stackView.pop()
+            onGoToMain: stackView.push(mainPage)
+            onGoToIndicators: stackView.push(indicatorsPage)
+            onGoToPurchases:stackView.push(purchasesPage)
+            onGoToSales:stackView.push(salesPage)
+            onGoToWarehouses:stackView.push(warehousesPage)
+            onGoToProducts:stackView.push(productsPage)
+            onGoToCounterparties:stackView.push(counterpartiesPage)
+            onGoToMoney:stackView.push(moneysPage)
+            onGoToForecasting:stackView.push(forecastingPage)
+            onGoToProfile:stackView.push(profilePage)
         }
     }
 }
